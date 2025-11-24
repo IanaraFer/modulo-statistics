@@ -34,8 +34,8 @@ cd modulo-statistics
 python -m venv .venv
 ./.venv/Scripts/Activate.ps1
 
-# Install minimal deps
-pip install numpy scipy jupyter
+# Install dependencies
+pip install -r requirements.txt
 
 # Launch notebooks
 jupyter notebook  # or open in VS Code
@@ -44,33 +44,18 @@ jupyter notebook  # or open in VS Code
 Then open `tasks.ipynb/problems.ipynb` and run cells top to bottom.
 
 ## Run Simulation From Command Line (Optional)
-If you prefer a script-based run, create `run_simulation.py` with:
-```python
-import numpy as np
-from scipy.special import comb
-
-def simulate(n_cups: int, n_tea: int, trials: int, seed: int = 42) -> float:
-	rng = np.random.default_rng(seed)
-	target = set(range(n_tea))
-	hits = 0
-	for _ in range(trials):
-		guess = set(rng.choice(n_cups, n_tea, replace=False))
-		if guess == target:
-			hits += 1
-	return hits / trials
-
-if __name__ == "__main__":
-	trials = 200_000
-	p_ext = simulate(12, 8, trials)
-	p_orig = simulate(8, 4, trials)
-	print("Simulated extended:", p_ext)
-	print("Theoretical extended:", 1/comb(12,8))
-	print("Simulated original:", p_orig)
-	print("Theoretical original:", 1/comb(8,4))
-```
-Run it:
+Use the provided `run_simulation.py` script for a fast, non-notebook reproduction:
 ```powershell
-python run_simulation.py
+python run_simulation.py --trials 300000 --extended 12 8 --original 8 4 --seed 42
+```
+Arguments:
+- `--trials`: Monte Carlo iterations (increase for accuracy)
+- `--extended CUPS TEA` and `--original CUPS TEA`: configure designs
+- `--seed`: reproducible randomness
+
+Example alternative design (10 cups: 5 tea-first, 5 milk-first):
+```powershell
+python run_simulation.py --extended 10 5 --original 8 4 --trials 500000
 ```
 
 ## Repository Structure
