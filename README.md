@@ -84,19 +84,14 @@ python -m venv .venv
 ```
 
 ### 3. Install Dependencies
-There is no `requirements.txt` yet. The notebooks currently use:
+
+The project requires:
 - `numpy`
-- `scipy` (for `scipy.special.comb`)
+- `scipy`
+- `matplotlib`
 
 Install them:
 ```powershell
-pip install numpy scipy
-```
-
-If you would like, create a `requirements.txt`:
-```powershell
-echo numpy> requirements.txt
-echo scipy>> requirements.txt
 pip install -r requirements.txt
 ```
 
@@ -110,9 +105,16 @@ jupyter notebook
 ```
 
 ## Running the Notebooks
-1. Open `tasks.ipynb/problems.ipynb`.
-2. Run cells in order (restart kernel first for a clean state).
-3. Each code cell handles a single logical step (imports, parameters, simulation, comparison, interpretation).
+
+1. Open any notebook in `tasks.ipynb/` (e.g., `problem2.ipynb`, `problem3.ipynb`, `problem4.ipynb`, or `problems.ipynb`)
+2. Run cells in order (restart kernel first for a clean state)
+3. Each code cell handles a single logical step (imports, parameters, simulation, visualization, interpretation)
+
+**Available Notebooks:**
+- **problem2.ipynb**: Normal Distribution and Sample Standard Deviation (ddof=0 vs ddof=1)
+- **problem3.ipynb**: t-Tests and Type II Error Analysis with power curves
+- **problem4.ipynb**: ANOVA vs Multiple t-Tests and the multiple comparisons problem
+- **problems.ipynb**: Lady Tasting Tea experiment simulation
 
 If any cell errors due to missing packages, verify the environment activation and reinstall dependencies.
 
@@ -158,12 +160,15 @@ If any file exceeds repository size best practices (>50MB):
 - Random results vary: Set `seed` in helper function or reuse provided seeds (42, 123).
 
 ## Future Improvements
-- Add `requirements.txt` (and optionally `pyproject.toml`).
-- Provide benchmarking cell to show scaling of simulation time vs trials.
-- Extend experiment to partial correctness thresholds (e.g., allow 11/12 correct) and compute cumulative probabilities.
-- Include power analysis for alternative designs.
+
+- Extend experiments to partial correctness thresholds (e.g., allow 11/12 correct) and compute cumulative probabilities
+- Include power analysis for alternative experimental designs
+- Add benchmarking cells to show scaling of simulation time vs trials
+- Explore Bayesian approaches to hypothesis testing
+- Add additional statistical problems exploring different distributions and tests
 
 ## Attribution
+
 Original Lady Tasting Tea concept credited to Sir Ronald Fisher. Implementation and extension prepared by Ianara Fernandes.
 
 ---
