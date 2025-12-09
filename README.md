@@ -64,10 +64,10 @@ README.md                # This file
 requirements.txt         # Python dependencies
 run_simulation.py        # Command-line simulation script
 tasks.ipynb/
-	problem2.ipynb       # Normal Distribution and Sample Standard Deviation
-	problem3.ipynb       # t-Tests and Type II Error Analysis
-	problem4.ipynb       # ANOVA vs Multiple t-Tests
-	problems.ipynb       # Lady Tasting Tea experiment simulation
+    problem2.ipynb       # Normal Distribution and Sample Standard Deviation
+    problem3.ipynb       # t-Tests and Type II Error Analysis
+    problem4.ipynb       # ANOVA vs Multiple t-Tests
+    problems.ipynb       # Lady Tasting Tea experiment simulation
 ```
 
 All simulations are generated on the fly using reproducible random seeds.
