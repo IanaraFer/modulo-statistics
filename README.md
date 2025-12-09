@@ -1,28 +1,36 @@
 # Modulo Statistics
 
-Assessment materials for a statistics module, including reproducible simulation notebooks (e.g. Lady Tasting Tea extension) and problem explorations.
+A collection of statistical simulations and analyses exploring fundamental concepts in hypothesis testing, experimental design, and statistical inference through reproducible Jupyter notebooks.
 
 Repository: https://github.com/IanaraFer/modulo-statistics/
 
+## Purpose
+
+This repository serves as an educational resource for understanding key statistical concepts through computational simulation and visualization. It contains four main problem sets that demonstrate:
+
+1. **Fisher's Lady Tasting Tea Experiment** - Classic experimental design and exact probability calculations
+2. **Normal Distribution and Standard Deviation** - Understanding bias in variance estimators (ddof parameter)
+3. **Type II Error and Statistical Power** - How effect size impacts the ability to detect true differences
+4. **ANOVA vs Multiple Comparisons** - Why multiple t-tests inflate error rates and when to use ANOVA
+
+Each problem is implemented as a self-contained Jupyter notebook with:
+- Clear explanations of the statistical concepts
+- Python code using NumPy, SciPy, and Matplotlib
+- Visualizations to illustrate key findings
+- Interpretations connecting theory to practice
+
+The code is designed to be reproducible, educational, and easily modifiable for exploring different parameters or scenarios.
+
 ## Table of Contents
-- [Project Overview](#project-overview)
+
+- [Purpose](#purpose)
+- [Quick Start](#quick-start)
 - [Repository Structure](#repository-structure)
 - [Setup Instructions](#setup-instructions)
 - [Running the Notebooks](#running-the-notebooks)
-- [Reproducing the Lady Tasting Tea Simulations](#reproducing-the-lady-tasting-tea-simulations)
-- [Data & Assets](#data--assets)
-- [Large Files Policy](#large-files-policy)
+- [How to Use This Repository](#how-to-use-this-repository)
 - [Troubleshooting](#troubleshooting)
-- [Future Improvements](#future-improvements)
-
-## Project Overview
-This repository is an educational exploration of classical hypothesis testing using a historically significant experiment. It focuses on how experimental design choices (number of trials / class balance) affect the probability of success by chance and therefore the stringency of a test.
-
-The core statistical example extends Fisher's "Lady Tasting Tea" experiment from 8 cups (4 tea-first, 4 milk-first) to 12 cups (8 tea-first, 4 milk-first) to illustrate:
-1. How combinatorial counts ("choose" functions) drive exact p-values.
-2. When Monte Carlo simulation is appropriate for validating analytic results.
-3. How increasing imbalance or total sample size tightens chance probabilities.
-4. Practical interpretation of very small p-values in an experimental context.
+- [References](#references)
 
 ## Quick Start
 ```powershell
@@ -118,6 +126,37 @@ jupyter notebook
 
 If any cell errors due to missing packages, verify the environment activation and reinstall dependencies.
 
+## How to Use This Repository
+
+### For Learning Statistical Concepts
+
+Each notebook is self-contained and can be studied independently:
+
+- **Start with problem2.ipynb** if you want to understand sampling distributions and bias in estimators
+- **Move to problem3.ipynb** to learn about statistical power and Type II errors
+- **Study problem4.ipynb** to understand ANOVA and the multiple comparisons problem
+- **Explore problems.ipynb** for Fisher's classic experimental design example
+
+### For Running Simulations
+
+All simulations use reproducible random seeds (typically 2025 or 42), so you should get identical results when running the same code. To explore different scenarios:
+
+1. **Modify parameters** at the top of each notebook (clearly marked in parameter cells)
+2. **Change sample sizes** to see how results scale with larger datasets
+3. **Adjust significance levels** (α) to understand their impact on conclusions
+4. **Increase simulation trials** for more precise Monte Carlo estimates
+
+### For Extending the Analysis
+
+The code is designed to be modular and easy to modify:
+
+- All helper functions are documented with docstrings
+- Visualization code is separated from computation
+- Random number generators use seeds for reproducibility
+- Parameters are centralized at the beginning of notebooks
+
+Feel free to fork the repository and adapt the code for your own statistical experiments!
+
 ## Reproducing the Lady Tasting Tea Simulations
 Key parameters (defined early in `problems.ipynb`):
 - `n_cups_extended = 12`, `n_tea_first_extended = 8`, `n_milk_first_extended = 4`
@@ -128,36 +167,30 @@ The helper function `simulate_exact_match` encapsulates the random guessing logi
 
 To adjust computational cost, reduce `n_simulations` (e.g. 100_000) for faster iteration, then scale up for final results.
 
-## Data & Assets
-No external datasets or images are required; all results are generated programmatically. If future problems require datasets:
-- Store small CSV/JSON files under a new `data/` directory.
-- For large public datasets, provide scripted download (see template below).
-
-### Example Download Snippet (Template)
-```python
-import urllib.request, pathlib
-DATA_DIR = pathlib.Path("data")
-DATA_DIR.mkdir(exist_ok=True)
-url = "https://example.com/large_dataset.csv"  # Replace
-dest = DATA_DIR / "large_dataset.csv"
-if not dest.exists():
-		print("Downloading large dataset...")
-		urllib.request.urlretrieve(url, dest)
-		print("Download complete.")
-else:
-		print("Dataset already present.")
-```
-
-## Large Files Policy
-If any file exceeds repository size best practices (>50MB):
-- Do NOT commit directly.
-- Provide an automated download script instead (as above).
-- Optionally use Git LFS if truly necessary (document commands).
-
 ## Troubleshooting
-- "ModuleNotFoundError": Ensure virtual environment activated and run `pip install numpy scipy`.
-- Performance slow: Lower `n_simulations` for exploratory runs.
-- Random results vary: Set `seed` in helper function or reuse provided seeds (42, 123).
+
+**"ModuleNotFoundError" or Import Errors:**
+- Ensure your virtual environment is activated
+- Run `pip install -r requirements.txt` to install all dependencies
+- Verify you're using Python 3.10 or higher
+
+**Notebook Kernel Issues:**
+- In VS Code: Select the Python interpreter from your `.venv` folder using the kernel picker
+- In Jupyter: Ensure you've installed jupyter in the virtual environment
+
+**Slow Performance:**
+- Reduce `n_simulations` or `N_SAMPLES` parameters for faster exploratory runs
+- Increase them back for final, publication-quality results
+
+**Random Results Vary:**
+- All notebooks use fixed seeds (2025, 42, or 123) for reproducibility
+- If you modify code, ensure you're not accidentally removing seed parameters
+- For truly random results, set `seed=None` or remove the seed parameter
+
+**Visualization Not Showing:**
+- Ensure matplotlib is installed: `pip install matplotlib`
+- In VS Code, plots should appear inline automatically
+- In Jupyter, you may need `%matplotlib inline` magic command
 
 ## Future Improvements
 
