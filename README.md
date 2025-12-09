@@ -61,12 +61,16 @@ python run_simulation.py --extended 10 5 --original 8 4 --trials 500000
 ## Repository Structure
 ```
 README.md                # This file
+requirements.txt         # Python dependencies
+run_simulation.py        # Command-line simulation script
 tasks.ipynb/
-	lady_tasting_tea.ipynb # Related experiment notebook (if present)
-	problems.ipynb         # Main problems & extended experiment simulation
+	problem2.ipynb       # Normal Distribution and Sample Standard Deviation
+	problem3.ipynb       # t-Tests and Type II Error Analysis
+	problem4.ipynb       # ANOVA vs Multiple t-Tests
+	problems.ipynb       # Lady Tasting Tea experiment simulation
 ```
 
-Currently there are no dedicated data folders because simulations are generated on the fly.
+All simulations are generated on the fly using reproducible random seeds.
 
 ## Setup Instructions
 ### 1. Python Version
