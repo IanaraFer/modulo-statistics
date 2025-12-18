@@ -49,7 +49,7 @@ pip install -r requirements.txt
 jupyter notebook  # or open in VS Code
 ```
 
-Then open `tasks.ipynb/problems.ipynb` and run cells top to bottom.
+Then open `problems.ipynb/problems.ipynb` and run cells top to bottom.
 
 ## Run Simulation From Command Line (Optional)
 Use the provided `run_simulation.py` script for a fast, non-notebook reproduction:
@@ -71,11 +71,11 @@ python run_simulation.py --extended 10 5 --original 8 4 --trials 500000
 README.md                # This file
 requirements.txt         # Python dependencies
 run_simulation.py        # Command-line simulation script
-tasks.ipynb/
-    problem2.ipynb       # Normal Distribution and Sample Standard Deviation
-    problem3.ipynb       # t-Tests and Type II Error Analysis
-    problem4.ipynb       # ANOVA vs Multiple t-Tests
-    problems.ipynb       # Lady Tasting Tea experiment simulation
+problems.ipynb/
+   problem2.ipynb       # Normal Distribution and Sample Standard Deviation
+   problem3.ipynb       # t-Tests and Type II Error Analysis
+   problem4.ipynb       # ANOVA vs Multiple t-Tests
+   problems.ipynb       # Lady Tasting Tea experiment simulation
 ```
 
 All simulations are generated on the fly using reproducible random seeds.
@@ -114,7 +114,7 @@ jupyter notebook
 
 ## Running the Notebooks
 
-1. Open any notebook in `tasks.ipynb/` (e.g., `problem2.ipynb`, `problem3.ipynb`, `problem4.ipynb`, or `problems.ipynb`)
+1. Open any notebook in `problems.ipynb/` (e.g., `problem2.ipynb`, `problem3.ipynb`, `problem4.ipynb`, or `problems.ipynb`)
 2. Run cells in order (restart kernel first for a clean state)
 3. Each code cell handles a single logical step (imports, parameters, simulation, visualization, interpretation)
 
